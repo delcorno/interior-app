@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>テスト送信</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+  <h1>メール送信テスト</h1>
+  <button id="send-email">送信する</button>
+
+  <script>
+    (function(){
+      emailjs.init("5zaaZ35_Y4lsyp159"); // Public Key
+    })();
+
+    document.getElementById("send-email").addEventListener("click", () => {
+      emailjs.send("service_c7hvrn7", "template_g56a0u9", {
+        name: "テスト",
+        title: "テスト送信",
+        message: "これはテストメッセージです。",
+        email: "naotoyamanaka221@gmail.com"
+      }).then(function() {
+        alert("メール送信に成功しました！");
+      }, function(error) {
+        alert("送信エラー：" + JSON.stringify(error));
+      });
+    });
+  </script>
+</body>
+</html>
